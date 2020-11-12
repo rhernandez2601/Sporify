@@ -9,11 +9,10 @@ body {
   }
   
   .messages {
-    padding: 8px;
+    padding: 20px;
     background: #f4f4f4;
     height: 300px;
     overflow-y: scroll;
-    margin: 8px 0px;
   }
   
   .messages > div {
@@ -43,4 +42,9 @@ body {
     height: 18px;
     width: 300px;
     border: none;
+  }
+
+  .song_share_item:hover {
+    background-color: white;
+    cursor: pointer;
   }
