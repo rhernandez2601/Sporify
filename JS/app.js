@@ -1,11 +1,13 @@
-var userLink;
+var userName;
 var access_token;
 var song_name, artist, song_url, artist_url, album_image;
 
 $(function () {
     $("#shareSong").on("click", function () {
         var url = "http://" + window.location.host + "/chat";
-        url += '?song_name=' + encodeURIComponent(song_name);
+        url += '?album_image=' + encodeURIComponent(album_image);
+        url += '&userName=' + encodeURIComponent(userName);
+        url += '&song_name=' + encodeURIComponent(song_name);
         url += '&artist=' + encodeURIComponent(artist);
         url += '&song_url=' + encodeURIComponent(song_url);
 
@@ -37,9 +39,7 @@ $(function () {
                 'Authorization': 'Bearer ' + access_token
             },
             success: function (response) {
-                userLink = response.external_urls.spotify;
-
-                $("#user-link").html(userLink);
+                userName = response.display_name;
 
                 $('#not-logged-in').hide();
                 $('#logged-in').show();
