@@ -1,6 +1,19 @@
 var userName;
 var access_token;
 var song_name, artist, song_url, artist_url, album_image;
+var q, type, market, limit, offset;
+
+type = "track";
+market = "US";
+limit = "5";
+offset = "5";
+
+var searchParams = "";
+
+searchParams += '&type=' + encodeURIComponent(type);
+searchParams += '&market=' + encodeURIComponent(market);
+searchParams += '&limit=' + encodeURIComponent(limit);
+searchParams += '&offset=' + encodeURIComponent(offset);
 
 $(function () {
     $("#shareSong").on("click", function () {
@@ -51,6 +64,46 @@ $(function () {
         $('#not-logged-in').show();
         $('#logged-in').hide();
     }
+
+    new autoComplete({
+        selector: 'input[name="searchSong"]',
+        source: function (term, response) {
+            $.ajax({
+                method: "GET",
+                url: 'https://api.spotify.com/v1/search?q=' + encodeURIComponent(term) + searchParams,
+                headers: {
+                    'Authorization': 'Bearer ' + access_token
+                },
+                success: function (data) {
+                    response(data.tracks.items.map(track => [
+                        track.name, //song name
+                        track.artists[0].name, //artist name
+                        track.external_urls.spotify, //song url
+                        track.album.images[0].url, //album image
+                        track.name + " by " + track.artists[0].name
+                    ]));
+                }
+            });
+        },
+        minChars: 3,
+        delay: 250,
+        renderItem: function (item, search) {
+            search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+            var re = new RegExp("(" + search.split(' ').join('|') + ")", "gi");
+            return '<div class="autocomplete-suggestion" data-song_name="' + item[0] + '" data-artist="' + item[1] + '" data-song_url="' + item[2] + '" data-album_image="' + item[3] + '">' + item[4].replace(re, "<b>$1</b>") + '</div>';
+        },
+        onSelect: function (e, term, item) {
+
+            var url = "http://" + window.location.host + "/chat";
+            url += '?album_image=' + encodeURIComponent(item.getAttribute("data-album_image"));
+            url += '&userName=' + encodeURIComponent(userName);
+            url += '&song_name=' + encodeURIComponent(item.getAttribute("data-song_name"));
+            url += '&artist=' + encodeURIComponent(item.getAttribute("data-artist"));
+            url += '&song_url=' + encodeURIComponent(item.getAttribute("data-song_url"));
+
+            window.location.href = url;
+        }
+    });
 });
 
 function getHashParams() {
@@ -96,8 +149,7 @@ function getCurrentOrRecentTrack() {
                                 "background-image: url('" + album_image + "'); background-repeat:no-repeat; background-position:center; opacity: 50%");
                     }
                 });
-            }
-            else {
+            } else {
                 var body_text = response;
                 song_name = body_text.item.name;
                 artist = body_text.item.artists[0].name;
