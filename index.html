@@ -16,40 +16,41 @@
 
     <div class="container-fluid">
 
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-
-                <ul class="nav navbar-nav navbar-logo pull-sm-left">
-                    <li class="nav-item">
-                        <a class="navbar-brand mr-auto" href="index.html">Sporify</a>
-                    </li>
-                </ul>
-
-                <ul class="nav navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <form class="form-inline">
-                            <input id="searchSong" name="searchSong" class="form-control mr-sm-2" type="search"
-                                placeholder="Search a Song" aria-label="Search">
-                            <button id="searchSongSubmit" class="btn btn-outline-success my-2 my-sm-0"
-                                type="button">Search</button>
-                        </form>
-                    </li>
-                </ul>
-
-                <ul class="nav navbar-nav pull-sm-right">
-                    <li class="nav-item">
-                        <a class="nav-link" href="chat.html">World Chat</a>
-                    </li>
-                </ul>
-
-            </div>
-        </nav>
-
         <div id="not-logged-in">
-            <button class="btn btn-success" type="button" id="log-in-btn">Spotify Log In</button>
+            <button class="btn btn-success btn-outline-warning btn-lg" type="button" id="log-in-btn"
+                style="text-align: center; margin-top: 275px;">Spotify Log In</button>
         </div>
 
         <div id="logged-in" style="display: none;">
+
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+
+                    <ul class="nav navbar-nav navbar-logo pull-sm-left">
+                        <li class="nav-item">
+                            <a class="navbar-brand mr-auto" href="index.html">Sporify</a>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <form class="form-inline">
+                                <input id="searchSong" name="searchSong" class="form-control mr-sm-2" type="search"
+                                    placeholder="Search a Song" aria-label="Search">
+                                <button id="searchSongSubmit" class="btn btn-outline-primary btn-clear my-2 my-sm-0"
+                                    type="button">Search</button>
+                            </form>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav pull-sm-right">
+                        <li class="nav-item">
+                            <a class="nav-link" href="chat.html">World Chat</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </nav>
 
             <div id="album_image">
                 <div id="musicText">
@@ -59,7 +60,7 @@
                     <p><u><a target="_blank" id="artist"></a></u></p>
                 </div>
             </div>
-            <button class="btn btn-info" type="button" id="shareSong">Share</button>
+            <button class="btn btn-secondary btn-lg btn-outline-warning" type="button" id="shareSong">Share</button>
         </div>
     </div>
 
