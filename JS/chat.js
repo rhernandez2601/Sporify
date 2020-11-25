@@ -1,4 +1,5 @@
 var song_url, song_name, artist, album_image, userName;
+var withParams = false;
 
 $(function () {
     var params = new URLSearchParams(window.location.search);
@@ -26,6 +27,10 @@ $(function () {
     
         song_info_div.appendChild(song_info);
         song_info_div.appendChild(artist_info);
+
+        withParams = true;
+
+        document.getElementById("songSharePreview").style.display = "block";
     }
 });
 
@@ -61,6 +66,7 @@ input.addEventListener('keypress', function (event) {
         });
 
         input.value = "";
+        document.getElementById("songSharePreview").style.display = "none";
     }
 })
 
