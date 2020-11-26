@@ -144,9 +144,10 @@ function getCurrentOrRecentTrack() {
                         document.getElementById("artist").innerHTML = artist;
                         document.getElementById("artist").setAttribute("href", artist_url);
                         document.getElementById("song_title").setAttribute("href", song_url);
-                        document.getElementById("album_image")
-                            .setAttribute("style",
-                                "background-image: url('" + album_image + "'); background-repeat:no-repeat; background-position:center; opacity: 50%");
+                        var imgElement = document.createElement("img");
+                        imgElement.src = album_image;
+                        imgElement.style.width = "100%";
+                        document.getElementById("album_image").appendChild(imgElement);
                     }
                 });
             } else {
@@ -161,9 +162,10 @@ function getCurrentOrRecentTrack() {
                 document.getElementById("artist").innerHTML = artist;
                 document.getElementById("artist").setAttribute("href", artist_url);
                 document.getElementById("song_title").setAttribute("href", song_url);
-                document.getElementById("album_image")
-                    .setAttribute("style",
-                        "background-image: url('" + album_image + "'); background-repeat:no-repeat; background-position:center; opacity: 50%");
+                var imgElement = document.createElement("img");
+                imgElement.src = album_image;
+                imgElement.style.width = "100%";
+                document.getElementById("album_image").appendChild(imgElement);
             }
         }
     });

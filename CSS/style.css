@@ -1,25 +1,21 @@
 body  {
-    text-align:  center;
-    /* font-size:  40px; */
     padding:  20px;
     background: linear-gradient(to right, #2614c5, #5c7eee, #2614c5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */;
-    font-family: fantasy;
-    /* font-size: 75px; */
-    font-style: normal;
-    font-variant: small-caps;
-    /* font-weight: 400; */
-    /* line-height: 70px; */
+    font-family: 'Bebas Neue', cursive;
     color: rgb(196, 143, 30);
 }
 
-#musicText {
-    opacity: 100%;
+#musicText h4 {
+    font-size: 48px;
+    text-shadow: 0px 0px 12px rgba(0,0,0,0.5);
 }
 
 #song_title,  #artist  {
     text-decoration: none;
     color:  #569fac;
-} 
+    font-size: 60px;
+    text-shadow: 0px 0px 12px rgba(0,0,0,0.5);
+}
 
 #song_title:hover  {
     opacity:  0.6;
@@ -31,4 +27,22 @@ body  {
 
 nav {
     background-color: rgb(199, 199, 20);
+    margin-bottom: 65px;
+    -webkit-box-shadow: 0px 0px 25px 5px rgba(0,0,0,0.5); 
+    box-shadow: 0px 0px 25px 5px rgba(0,0,0,0.5);
+}
+
+#album_image {
+    -webkit-box-shadow: 0px 0px 25px 5px rgba(0,0,0,0.5); 
+    box-shadow: 0px 0px 25px 5px rgba(0,0,0,0.5);
+}
+
+a.navbar-brand, a.nav-link {
+    font-size: 32px;
+    font-weight: bolder;
+}
+
+#shareSong {
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.5); 
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.5);
 }
